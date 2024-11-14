@@ -25,9 +25,13 @@ VIBE_CATEGORIES = {
 }
 
 # Window configuration
-WINDOW_MIN_WIDTH = 1000
-WINDOW_MIN_HEIGHT = 700
+WINDOW_MIN_WIDTH = 1200  # Increased from 1000
+WINDOW_MIN_HEIGHT = 800  # Increased from 700
 WINDOW_TITLE = "VibeCatch"
+
+# Playlist widget configuration
+PLAYLIST_MIN_WIDTH = 550  # Minimum width for each playlist widget
+PLAYLIST_MIN_HEIGHT = 300  # Minimum height for each playlist widget
 
 # Audio configuration
 SAMPLE_RATE = 44100

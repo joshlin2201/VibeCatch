@@ -51,6 +51,32 @@ RECORD_BUTTON = f"""
     }}
 """
 
+# Copy button styles
+COPY_BUTTON = f"""
+    QPushButton {{
+        background-color: {colors.PURPLE};
+        border-radius: 4px;
+        padding: 4px 8px;
+        color: {colors.CURRENT_LINE};
+        font-size: 12px;
+        min-width: 60px;
+    }}
+    QPushButton:hover {{
+        background-color: {colors.PURPLE_HOVER};
+    }}
+    QPushButton:pressed {{
+        background-color: {colors.PURPLE_PRESSED};
+    }}
+"""
+
+# Copy notification style
+COPY_NOTIFICATION = f"""
+    color: {colors.GREEN};
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 4px;
+"""
+
 # Progress bar styles
 PROGRESS_BAR = f"""
     QProgressBar {{

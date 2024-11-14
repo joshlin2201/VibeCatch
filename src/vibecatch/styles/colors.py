@@ -15,3 +15,5 @@ DARKER = "#44475a"
 # Hover states
 GREEN_HOVER = "#5af78e"
 GREEN_PRESSED = "#45e06b"
+PURPLE_HOVER = "#c7a2fa"
+PURPLE_PRESSED = "#a584f8"

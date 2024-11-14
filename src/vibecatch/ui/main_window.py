@@ -1,10 +1,13 @@
 from PyQt5.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QGridLayout, 
-    QFrame, QLabel, QDialog, QPushButton
+    QFrame, QLabel, QDialog, QPushButton, QSizePolicy
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 
-from ..core.config import VIBE_CATEGORIES, WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT, WINDOW_TITLE
+from ..core.config import (
+    VIBE_CATEGORIES, WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT, 
+    WINDOW_TITLE, LAYOUT_SPACING, GRID_SPACING
+)
 from ..styles import components
 from .playlist_widget import PlaylistWidget
 from .record_widget import RecordWidget
@@ -61,12 +64,13 @@ class MainWindow(QMainWindow):
         main_widget = QWidget()
         self.setCentralWidget(main_widget)
         main_layout = QVBoxLayout(main_widget)
-        main_layout.setSpacing(6)
-        main_layout.setContentsMargins(6, 6, 6, 6)
+        main_layout.setSpacing(LAYOUT_SPACING)
+        main_layout.setContentsMargins(LAYOUT_SPACING, LAYOUT_SPACING, LAYOUT_SPACING, LAYOUT_SPACING)
         
         # Create header
         header = QFrame()
         header.setStyleSheet(components.FRAME_BASE)
+        header.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         header_layout = QVBoxLayout(header)
         header_layout.setSpacing(2)
         header_layout.setContentsMargins(6, 6, 6, 6)
@@ -105,9 +109,10 @@ class MainWindow(QMainWindow):
         # Create playlists section
         playlists_section = QFrame()
         playlists_section.setStyleSheet(components.FRAME_BASE)
+        playlists_section.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         playlists_layout = QGridLayout(playlists_section)
-        playlists_layout.setSpacing(6)
-        playlists_layout.setContentsMargins(6, 6, 6, 6)
+        playlists_layout.setSpacing(GRID_SPACING)
+        playlists_layout.setContentsMargins(GRID_SPACING, GRID_SPACING, GRID_SPACING, GRID_SPACING)
         
         # Add playlist widgets in a 2x2 grid
         self.playlist_widgets = {}
@@ -117,8 +122,16 @@ class MainWindow(QMainWindow):
             row = i // 2
             col = i % 2
             playlists_layout.addWidget(playlist, row, col)
+            
+            # Set equal column/row stretch
+            playlists_layout.setColumnStretch(col, 1)
+            playlists_layout.setRowStretch(row, 1)
         
         main_layout.addWidget(playlists_section)
+
+    def minimumSizeHint(self) -> QSize:
+        """Override minimum size hint"""
+        return QSize(WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT)
 
     def load_playlists(self):
         """Load existing playlists"""

@@ -20,13 +20,18 @@ class AudioManager(QThread):
     def __init__(self):
         super().__init__()
         self.is_recording = False
+        # Get the directory where the package is installed
+        self.data_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.playlists_file = os.path.join(self.data_dir, 'data', 'playlists.json')
+        # Ensure data directory exists
+        os.makedirs(os.path.dirname(self.playlists_file), exist_ok=True)
         self.playlists = self.load_playlists()
 
     def load_playlists(self) -> Dict[str, List[dict]]:
         """Load playlists from file"""
-        if os.path.exists('playlists.json'):
+        if os.path.exists(self.playlists_file):
             try:
-                with open('playlists.json', 'r') as f:
+                with open(self.playlists_file, 'r') as f:
                     return json.load(f)
             except Exception as e:
                 print(f"Error loading playlists: {e}")
@@ -40,7 +45,7 @@ class AudioManager(QThread):
     def save_playlists(self):
         """Save playlists to file"""
         try:
-            with open('playlists.json', 'w') as f:
+            with open(self.playlists_file, 'w') as f:
                 json.dump(self.playlists, f, indent=2)
         except Exception as e:
             print(f"Error saving playlists: {e}")
@@ -130,9 +135,11 @@ class AudioManager(QThread):
             if not frames:
                 return None
 
-            # Save as WAV file
+            # Save as WAV file in the data directory
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"recording_{timestamp}.wav"
+            recordings_dir = os.path.join(self.data_dir, 'data', 'recordings')
+            os.makedirs(recordings_dir, exist_ok=True)
+            filename = os.path.join(recordings_dir, f"recording_{timestamp}.wav")
             
             wf = wave.open(filename, 'wb')
             wf.setnchannels(CHANNELS)

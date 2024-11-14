@@ -30,6 +30,21 @@ src/vibecatch/
 └── __main__.py        # Application entry point
 ```
 
+## Data Storage
+
+The application maintains persistent storage for playlists and temporary audio recordings:
+
+- **Playlists**: Stored in `src/vibecatch/data/playlists.json`
+  - Automatically created if it doesn't exist
+  - Each playlist is categorized by mood
+  - Songs are stored with title, artist, and unique identifier
+  - Changes are saved immediately after modifications
+
+- **Recordings**: Temporarily stored in `src/vibecatch/data/recordings/`
+  - WAV format audio files
+  - Named with timestamps for uniqueness
+  - Automatically cleaned up after song recognition
+
 ## Installation
 
 1. Clone the repository:
@@ -66,6 +81,7 @@ src/vibecatch/
    - Wait for song recognition (5 seconds)
    - Choose a mood-based playlist to add the song
    - View your organized playlists
+   - Use the "Copy" button to copy playlist contents to clipboard
 
 ## Development
 
@@ -106,6 +122,7 @@ python setup.py build
 - Thread-safe audio processing
 - Real-time visual feedback
 - Efficient playlist management
+- Interactive copy functionality with visual feedback
 
 ## Contributing
 
