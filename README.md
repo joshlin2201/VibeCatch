@@ -1,61 +1,105 @@
-# VibeCatch Song Recognizer
+# VibeCatch 🎵
 
-A simple song recognition tool that uses the Shazam API to identify songs playing through your microphone.
+VibeCatch is a modern song recognition application that helps you organize music into mood-based playlists. It offers both command-line and graphical interfaces.
 
-## Python Version Setup
+## Features
 
-1. Install Python dependencies:
+- 🎯 **Real-time Song Recognition**: Uses Shazam's API for accurate music detection
+- 🎭 **Mood-Based Playlists**: Organize songs into different vibes:
+  - Get Hyped: High-energy tracks
+  - Chill Vibes: Relaxing tunes
+  - Romantic Feels: Love and emotional songs
+  - Focus Mode: Concentration-enhancing tracks
+  - Feel-Good Tunes: Uplifting music
+- 🎨 **Multiple Interfaces**: Choose between CLI or modern GUI
+- 🎤 **Smart Audio Detection**: Advanced audio processing for reliable song detection
+- 💾 **Persistent Storage**: Automatically saves your playlists
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/vibecatch.git
+   cd vibecatch
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-   Note: PyAudio might require additional system packages:
-   - On macOS: `brew install portaudio`
-   - On Ubuntu/Debian: `sudo apt-get install python3-pyaudio`
-   - On Windows: No additional steps needed
+4. System-specific requirements:
+   - **macOS**: `brew install portaudio`
+   - **Linux**: `sudo apt-get install python3-pyaudio portaudio19-dev`
+   - **Windows**: No additional steps needed
 
-2. Run the recognizer:
-   ```bash
-   python shazam_recognizer.py
-   ```
+## Usage
 
-3. Usage:
-   - Press Enter to start listening
-   - Play music clearly near your microphone
-   - Wait for 5 seconds while it records
-   - The program will attempt to identify the song
-   - Press Ctrl+C to exit
+### Command Line Interface (CLI)
 
-## Features
+Run the CLI version:
+```bash
+python vibecatch.py
+```
 
-- Real-time audio recording
-- Integration with Shazam API for accurate song recognition
-- Simple command-line interface
-- 5-second recording window
-- Progress indication during recording
-- Automatic cleanup of temporary audio files
+- Press Enter to start listening
+- Wait for song recognition
+- Choose a playlist to add the song to
+- View your organized playlists
+
+### Graphical Interface (GUI)
+
+Run the GUI version:
+```bash
+python gui_app.py
+```
+
+Features:
+- Modern, dark-themed interface
+- Real-time progress visualization
+- Easy playlist management
+- Click-to-record functionality
+- Visual song organization
 
 ## Technical Details
 
-- Records audio at 44.1kHz, 16-bit, mono
-- Uses WAV format for high-quality audio capture
-- Implements Shazam's 500KB file size limit
-- Proper error handling and user feedback
+### Audio Processing
+- 44.1kHz sample rate
+- 16-bit audio depth
+- Mono channel recording
+- Advanced audio level detection
+- Automatic gain control
 
-## Requirements
+### API Integration
+- Uses Shazam API via RapidAPI
+- Optimized for quick recognition
+- Handles various audio formats
+- Robust error handling
 
-- Python 3.6+
-- PyAudio
-- Requests
+### GUI Features
+- Built with PyQt5
+- Modern Dracula-inspired theme
+- Responsive design
+- Thread-safe audio processing
+- Real-time visual feedback
 
-## Troubleshooting
+## Contributing
 
-If you encounter microphone issues:
-1. Make sure your microphone is properly connected and selected as the default input device
-2. Check your system's audio input settings
-3. Ensure the music is playing clearly and loudly enough
-4. Try running the program again
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - feel free to modify and use as needed.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Shazam API via RapidAPI for song recognition
+- PyQt5 for the graphical interface
+- Dracula theme for color inspiration
+- Modern GUI Template by anjalp for design inspiration
