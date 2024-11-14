@@ -1,19 +1,34 @@
 # VibeCatch 🎵
 
-VibeCatch is a modern song recognition application that helps you organize music into mood-based playlists. It offers both command-line and graphical interfaces.
+A modern song recognition application that helps you organize music into scientifically-backed mood-based playlists.
 
 ## Features
 
 - 🎯 **Real-time Song Recognition**: Uses Shazam's API for accurate music detection
-- 🎭 **Mood-Based Playlists**: Organize songs into different vibes:
-  - Get Hyped: High-energy tracks
-  - Chill Vibes: Relaxing tunes
-  - Romantic Feels: Love and emotional songs
-  - Focus Mode: Concentration-enhancing tracks
-  - Feel-Good Tunes: Uplifting music
-- 🎨 **Multiple Interfaces**: Choose between CLI or modern GUI
-- 🎤 **Smart Audio Detection**: Advanced audio processing for reliable song detection
+- 🧠 **Science-Based Vibes**: Four core emotional categories based on music research:
+  - **Happiness and Joy**: Upbeat tempos and major keys activate dopamine and serotonin
+  - **Emotional Depth**: Minor keys and slower tempos for introspection
+  - **Relaxation and Calm**: Gentle rhythms to lower cortisol levels
+  - **Excitement and Energy**: Fast-paced beats for enhanced motivation
+- 🎨 **Modern Interface**: Clean, intuitive design with real-time feedback
 - 💾 **Persistent Storage**: Automatically saves your playlists
+
+## Project Structure
+
+```
+src/vibecatch/
+├── core/               # Core functionality
+│   ├── audio_manager.py   # Audio recording and recognition
+│   └── config.py          # Application configuration
+├── styles/             # UI styling
+│   ├── colors.py         # Color definitions
+│   └── components.py     # Component styles
+├── ui/                 # User interface components
+│   ├── main_window.py    # Main application window
+│   ├── playlist_widget.py # Playlist component
+│   └── record_widget.py  # Recording interface
+└── __main__.py        # Application entry point
+```
 
 ## Installation
 
@@ -29,9 +44,9 @@ VibeCatch is a modern song recognition application that helps you organize music
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install dependencies:
+3. Install the package:
    ```bash
-   pip install -r requirements.txt
+   pip install -e .
    ```
 
 4. System-specific requirements:
@@ -41,31 +56,34 @@ VibeCatch is a modern song recognition application that helps you organize music
 
 ## Usage
 
-### Command Line Interface (CLI)
+1. Start the application:
+   ```bash
+   python -m vibecatch
+   ```
 
-Run the CLI version:
+2. Using the application:
+   - Click "Start Listening" to begin recording
+   - Wait for song recognition (5 seconds)
+   - Choose a mood-based playlist to add the song
+   - View your organized playlists
+
+## Development
+
+### Requirements
+- Python 3.8+
+- PyQt5
+- PyAudio
+- Requests
+
+### Running Tests
 ```bash
-python vibecatch.py
+python -m pytest tests/
 ```
 
-- Press Enter to start listening
-- Wait for song recognition
-- Choose a playlist to add the song to
-- View your organized playlists
-
-### Graphical Interface (GUI)
-
-Run the GUI version:
+### Building from Source
 ```bash
-python gui_app.py
+python setup.py build
 ```
-
-Features:
-- Modern, dark-themed interface
-- Real-time progress visualization
-- Easy playlist management
-- Click-to-record functionality
-- Visual song organization
 
 ## Technical Details
 
@@ -73,25 +91,29 @@ Features:
 - 44.1kHz sample rate
 - 16-bit audio depth
 - Mono channel recording
-- Advanced audio level detection
-- Automatic gain control
+- 500KB maximum file size
+- WAV format for high quality
 
 ### API Integration
-- Uses Shazam API via RapidAPI
-- Optimized for quick recognition
-- Handles various audio formats
+- Shazam API via RapidAPI
+- Real-time song recognition
 - Robust error handling
+- Automatic cleanup of temporary files
 
-### GUI Features
-- Built with PyQt5
+### UI Features
 - Modern Dracula-inspired theme
 - Responsive design
 - Thread-safe audio processing
 - Real-time visual feedback
+- Efficient playlist management
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
@@ -102,4 +124,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Shazam API via RapidAPI for song recognition
 - PyQt5 for the graphical interface
 - Dracula theme for color inspiration
-- Modern GUI Template by anjalp for design inspiration
+- Music psychology research for vibe categorization
