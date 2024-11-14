@@ -13,39 +13,7 @@ A modern song recognition application that helps you organize music into scienti
 - 🎨 **Modern Interface**: Clean, intuitive design with real-time feedback
 - 💾 **Persistent Storage**: Automatically saves your playlists
 
-## Project Structure
-
-```
-src/vibecatch/
-├── core/               # Core functionality
-│   ├── audio_manager.py   # Audio recording and recognition
-│   └── config.py          # Application configuration
-├── styles/             # UI styling
-│   ├── colors.py         # Color definitions
-│   └── components.py     # Component styles
-├── ui/                 # User interface components
-│   ├── main_window.py    # Main application window
-│   ├── playlist_widget.py # Playlist component
-│   └── record_widget.py  # Recording interface
-└── __main__.py        # Application entry point
-```
-
-## Data Storage
-
-The application maintains persistent storage for playlists and temporary audio recordings:
-
-- **Playlists**: Stored in `src/vibecatch/data/playlists.json`
-  - Automatically created if it doesn't exist
-  - Each playlist is categorized by mood
-  - Songs are stored with title, artist, and unique identifier
-  - Changes are saved immediately after modifications
-
-- **Recordings**: Temporarily stored in `src/vibecatch/data/recordings/`
-  - WAV format audio files
-  - Named with timestamps for uniqueness
-  - Automatically cleaned up after song recognition
-
-## Installation
+## Quick Start
 
 1. Clone the repository:
    ```bash
@@ -82,6 +50,76 @@ The application maintains persistent storage for playlists and temporary audio r
    - Choose a mood-based playlist to add the song
    - View your organized playlists
    - Use the "Copy" button to copy playlist contents to clipboard
+
+## Project Structure
+
+```
+src/vibecatch/
+├── core/               # Core functionality
+│   ├── audio_manager.py   # Audio recording and recognition
+│   └── config.py          # Application configuration
+├── styles/             # UI styling
+│   ├── colors.py         # Color definitions
+│   └── components.py     # Component styles
+├── ui/                 # User interface components
+│   ├── main_window.py    # Main application window
+│   ├── playlist_widget.py # Playlist component
+│   └── record_widget.py  # Recording interface
+└── __main__.py        # Application entry point
+```
+
+## Data Storage
+
+The application maintains persistent storage for playlists and temporary audio recordings:
+
+- **Playlists**: Stored in `src/vibecatch/data/playlists.json`
+  - Automatically created if it doesn't exist
+  - Each playlist is categorized by mood
+  - Songs are stored with title, artist, and unique identifier
+  - Changes are saved immediately after modifications
+
+- **Recordings**: Temporarily stored in `src/vibecatch/data/recordings/`
+  - WAV format audio files
+  - Named with timestamps for uniqueness
+  - Automatically cleaned up after song recognition
+
+## Understanding the Setup
+
+This section explains the installation process in detail, particularly helpful for beginners.
+
+### Virtual Environment Setup
+The command `python -m venv venv` followed by activation is a crucial step. Here's why:
+
+- **What is a virtual environment?**
+  - Think of it as a clean, isolated room for your project
+  - Prevents conflicts between different Python projects on your computer
+  - Each project can have its own versions of packages
+  - Makes sharing your project easier as others can recreate the exact same environment
+
+- **Command Breakdown:**
+  - `python -m venv venv`: Creates a new virtual environment named "venv"
+  - `source venv/bin/activate` or `venv\Scripts\activate`: Activates the environment
+  - When activated, you'll see `(venv)` at the start of your command prompt
+  - To deactivate later, simply type `deactivate`
+
+### Package Installation
+The command `pip install -e .` sets up the project. Here's what it does:
+
+- **Command Explanation:**
+  - `pip` is Python's package installer
+  - `-e` means "editable" installation
+  - `.` means "install from the current directory"
+
+- **What happens during installation:**
+  - Reads the `setup.py` file
+  - Installs all required dependencies
+  - Sets up the project in development mode
+  - Allows you to modify code without reinstalling
+
+- **Why development mode (-e)?**
+  - Changes to the code take effect immediately
+  - No need to reinstall after making changes
+  - Perfect for development and testing
 
 ## Development
 
